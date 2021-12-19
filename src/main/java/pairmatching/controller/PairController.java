@@ -60,7 +60,14 @@ public class PairController {
             Course course = validator.validateCourse(splitInformation[0]);
             Level level = validator.validateLevel(splitInformation[1]);
             Mission mission = validator.validateMission(level, splitInformation[2]);
-            inputPair(course, mission);
+            // 선택한 미션에 페어가 있을 경우
+            // - 새로 넣을 경우
+            //   - 입력
+            // - 새로 넣지 않을 경우
+            // 선택한 미션에 페어가 없을 경우
+            // - 입력
+            isExistPairList(course, mission);
+//            inputPair(course, mission);
             outputView.printPairList(course, mission);
         } catch (IllegalArgumentException exception) {
             outputView.printError(exception.getMessage());
@@ -109,7 +116,19 @@ public class PairController {
 
     private void isExistPairList(Course course, Mission mission) {
         if (mission.getPairList(course) != null) {
+            selectUpdate(course, mission);
+            return;
+        }
+        inputPair(course, mission);
+    }
 
+    private void selectUpdate(Course course, Mission mission) {
+        System.out.println("매칭 정보가 있습니다. 다시 매칭하시겠습니까?");
+        System.out.println("네 | 아니오");
+        String select = Console.readLine();
+        if (select.equals("네")) {
+            mission.initPairList(course);
+            inputPair(course, mission);
         }
     }
 }

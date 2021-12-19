@@ -21,4 +21,8 @@ public class Mission {
     public PairList getPairList(Course course){
         return pairMap.get(course);
     }
+
+    public void initPairList(Course course){
+        pairMap.get(course).clear();
+    }
 }
