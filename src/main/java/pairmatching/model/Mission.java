@@ -14,15 +14,19 @@ public class Mission {
         return this.name;
     }
 
-    public void addPairMap(Course course, PairList pairList){
+    public void addPairMap(Course course, PairList pairList) {
         pairMap.put(course, pairList);
     }
 
-    public PairList getPairList(Course course){
+    public PairList getPairList(Course course) {
         return pairMap.get(course);
     }
 
-    public void initPairList(Course course){
+    public void initPairMap() {
+        pairMap.clear();
+    }
+
+    public void initPairList(Course course) {
         pairMap.get(course).clear();
     }
 }

@@ -10,7 +10,6 @@ public enum Level {
     LEVEL5("레벨5");
 
     private String name;
-    private ArrayList<String> missionsold = new ArrayList<>();
     private ArrayList<Mission> missions = new ArrayList<>();
 
     Level(String name) {
@@ -21,12 +20,12 @@ public enum Level {
         missions.add(new Mission(missionName));
     }
 
-    public ArrayList<Mission> getMissions() {
-        return missions;
-    }
-
     public String getName() {
         return this.name;
+    }
+
+    public ArrayList<Mission> getMissions() {
+        return missions;
     }
 
     public Mission findMissionByName(String missionName) {

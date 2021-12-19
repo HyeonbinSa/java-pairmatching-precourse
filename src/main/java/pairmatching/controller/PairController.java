@@ -8,6 +8,7 @@ import pairmatching.validator.Validator;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PairController {
@@ -92,7 +93,16 @@ public class PairController {
     }
 
     private void initialPair() {
+        for (Level level : Level.values()) {
+            ArrayList<Mission> missions = level.getMissions();
+            initialMissionList(missions);
+        }
+    }
 
+    private void initialMissionList(ArrayList<Mission> missions) {
+        for (Mission mission : missions) {
+            mission.initPairMap();
+        }
     }
 
     private void inputPair(Course course, Mission mission) {
