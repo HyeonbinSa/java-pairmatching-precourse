@@ -8,6 +8,7 @@ import java.util.List;
 public class OutputView {
     private static final String DIVIDER_LINE = "#############################################";
     private static final String PAIR_MATCH_RESULT = "페어 매칭 결과입니다.";
+    private static final String INIT_PAIR_RESULT = "초기화 되었습니다.";
     private static final String NEW_LINE = "\n";
     private static final String ERROR = "[ERROR] ";
     private static final String COURSE_PREFIX = "과정: ";
@@ -56,12 +57,20 @@ public class OutputView {
             printPair(pair);
         }
     }
-
+    public void printPairListTest(PairList pairList){
+        for (Pair pair : pairList.getPairList()) {
+            printPair(pair);
+        }
+    }
     public void printPair(Pair pair) {
         System.out.println(String.join(PAIR_DIVIDER, pair.getPair()));
     }
 
     public void printError(String message) {
         System.out.println(ERROR + message);
+    }
+
+    public void printInitPairMessage() {
+        System.out.println(INIT_PAIR_RESULT);
     }
 }

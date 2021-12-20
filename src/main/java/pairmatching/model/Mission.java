@@ -27,6 +27,6 @@ public class Mission {
     }
 
     public void initPairList(Course course) {
-        pairMap.get(course).clear();
+        pairMap.remove(course);
     }
 }

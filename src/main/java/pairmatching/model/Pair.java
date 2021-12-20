@@ -16,4 +16,20 @@ public class Pair {
     public ArrayList<String> getPair(){
         return pair;
     }
+
+    public boolean comparePair(Pair firstPair, Pair secondPair){
+        int count = 0;
+        System.out.println(firstPair.getPair());
+        System.out.println(secondPair.getPair());
+        for(String name : firstPair.getPair()){
+            if(secondPair.getPair().contains(name)){
+                System.out.println(name);
+                count++;
+            }
+        }
+        if(count >= 2){
+            return false;
+        }
+        return true;
+    }
 }

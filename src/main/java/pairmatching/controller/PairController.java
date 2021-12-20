@@ -16,6 +16,7 @@ public class PairController {
     private InitialSetting initialSetting = new InitialSetting();
     private OutputView outputView = new OutputView();
     private Validator validator = new Validator();
+    private PairMatchController pairMatchController = new PairMatchController();
     private static final String MENU_ONE = "1";
     private static final String MENU_TWO = "2";
     private static final String MENU_THREE = "3";
@@ -61,14 +62,7 @@ public class PairController {
             Course course = validator.validateCourse(splitInformation[0]);
             Level level = validator.validateLevel(splitInformation[1]);
             Mission mission = validator.validateMission(level, splitInformation[2]);
-            // 선택한 미션에 페어가 있을 경우
-            // - 새로 넣을 경우
-            //   - 입력
-            // - 새로 넣지 않을 경우
-            // 선택한 미션에 페어가 없을 경우
-            // - 입력
-            isExistPairList(course, mission);
-//            inputPair(course, mission);
+            pairMatchController.match(level, course, mission);
             outputView.printPairList(course, mission);
         } catch (IllegalArgumentException exception) {
             outputView.printError(exception.getMessage());
@@ -89,6 +83,7 @@ public class PairController {
             outputView.printPairList(course, mission);
         } catch (IllegalArgumentException exception) {
             outputView.printError(exception.getMessage());
+            getPair();
         }
     }
 
@@ -103,41 +98,48 @@ public class PairController {
         for (Mission mission : missions) {
             mission.initPairMap();
         }
+        outputView.printInitPairMessage();
+    }
+    // void -> PairList
+//    private PairList inputPair(Course course, Mission mission) {
+//        List<String> crewList = shuffleStringCrew(course);
+//        PairList pairList = new PairList();
+//        for (int idx = 0; idx < crewList.size(); idx += 2) {
+//            Pair pair = new Pair(crewList.get(idx), crewList.get(idx + 1));
+//            if (crewList.size() % 2 == 1 && idx == crewList.size() - 2) {
+//                pair.addPair(crewList.get(crewList.size() - 1));
+//                pairList.addPair(pair);
+//                break;
+//            }
+//            pairList.addPair(pair);
+//        }
+////        mission.addPairMap(course, pairList);
+//        return pairList;
+//    }
+
+    private ArrayList<Mission> checkSameLevel(Level level) {
+        return level.getMissions();
+        // 같은 레벨에서 페어 매칭은 최대 한번
     }
 
-    private void inputPair(Course course, Mission mission) {
-        List<String> crewList = shuffleStringCrew(course);
-        PairList pairList = new PairList();
-        for (int idx = 0; idx < crewList.size(); idx += 2) {
-            Pair pair = new Pair(crewList.get(idx), crewList.get(idx + 1));
-            if (crewList.size() % 2 == 1 && idx == crewList.size() - 2) {
-                pair.addPair(crewList.get(crewList.size() - 1));
-                pairList.addPair(pair);
-                break;
-            }
-            pairList.addPair(pair);
-        }
-        mission.addPairMap(course, pairList);
-    }
+//    private List<String> shuffleStringCrew(Course course) {
+//        return Randoms.shuffle(course.getStringCrewList());
+//    }
 
-    private List<String> shuffleStringCrew(Course course) {
-        return Randoms.shuffle(course.getStringCrewList());
-    }
+//    private PairList checkExistPairListInMission(Course course, Mission mission) {
+//        if (mission.getPairList(course) != null) {
+//            return selectUpdate(course, mission);
+//        }
+//        return inputPair(course, mission);
+//    }
 
-    private void isExistPairList(Course course, Mission mission) {
-        if (mission.getPairList(course) != null) {
-            selectUpdate(course, mission);
-            return;
-        }
-        inputPair(course, mission);
-    }
-
-    private void selectUpdate(Course course, Mission mission) {
-        inputView.selectUpdatePair();
-        String select = Console.readLine();
-        if (select.equals("네")) {
-            mission.initPairList(course);
-            inputPair(course, mission);
-        }
-    }
+//    private PairList selectUpdate(Course course, Mission mission) {
+//        inputView.selectUpdatePair();
+//        String select = Console.readLine();
+//        if (select.equals("네")) {
+//            mission.initPairList(course);
+//            return inputPair(course, mission);
+//        }
+//        return null;
+//    }
 }

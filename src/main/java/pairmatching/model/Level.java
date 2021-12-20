@@ -36,4 +36,14 @@ public enum Level {
         }
         return null;
     }
+
+    public boolean checkExistSamePair(Course course, PairList pairList) {
+        for (Mission mission : missions) {
+            PairList existPairList = mission.getPairList(course);
+            if(!existPairList.existSamePair(pairList)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

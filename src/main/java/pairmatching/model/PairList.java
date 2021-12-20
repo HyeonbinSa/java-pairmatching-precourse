@@ -16,4 +16,21 @@ public class PairList {
     public void clear() {
         pairList.clear();
     }
+
+    public boolean existSamePair(PairList comparePairList){
+        for(Pair pair :  pairList){
+            if(!existSamePairInPairList(comparePairList, pair)){
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean existSamePairInPairList(PairList comparePairList, Pair pair){
+        for(Pair comparePair: comparePairList.getPairList()){
+            if(!comparePair.comparePair(comparePair, pair)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
