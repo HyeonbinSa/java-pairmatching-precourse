@@ -32,7 +32,7 @@ public class InitialSetting {
             fileInput(fileName);
         }
     }
-    
+
     // 2. 해당 파일 읽기 
     public void fileInput(String fileName) {
         Course course = null;

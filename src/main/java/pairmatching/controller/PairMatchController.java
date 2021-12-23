@@ -40,7 +40,7 @@ public class PairMatchController {
         pairList.clear();
         for (int idx = 0; idx < randomList.size(); idx += 2) {
             Pair pair = new Pair(randomList.get(idx), randomList.get(idx + 1));
-            if (randomList.size() % 2 == 1 && idx == randomList.size() - 2) {
+            if (randomList.size() % 2 == 1 && idx == randomList.size() - 3) {
                 pair.addPair(randomList.get(randomList.size() - 1));
                 pairList.addPair(pair);
                 break;
