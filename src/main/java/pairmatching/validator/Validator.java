@@ -10,6 +10,12 @@ public class Validator {
     private static final String[] MENU_LIST = {"1", "2", "3", "Q"};
     private static final String[] UPDATE_MENU_LIST = {"네", "아니오"};
     private static final char SPACE = ' ';
+    private static final String STRING_SPACE = " ";
+    private static final String STRING_NULL = "";
+    private static final String SPLIT_REGEX = ",";
+    private static final int INFORMATION_LENGTH = 3;
+    private static final int MAXIMUM_LOOP_COUNT = 3;
+    private static final int START_INDEX = 0;
 
     public void validateSelectMenu(String menu) {
         if (!Arrays.asList(MENU_LIST).contains(menu)) {
@@ -24,8 +30,8 @@ public class Validator {
     }
 
     public String[] validateCountComma(String information) {
-        String[] splitInformation = information.split(",");
-        if (splitInformation.length != 3) {
+        String[] splitInformation = information.split(SPLIT_REGEX);
+        if (splitInformation.length != INFORMATION_LENGTH) {
             throw new IllegalArgumentException("입력 형식을 확인해주세요. - 입력 값 사이에 콤마(,)로 구분합니다.");
         }
         return splitInformation;
@@ -55,10 +61,10 @@ public class Validator {
     }
 
     public String validateExistSpace(String string) {
-        if (string.charAt(0) != SPACE) {
+        if (string.charAt(START_INDEX) != SPACE) {
             throw new IllegalArgumentException("입력 형식을 확인해주세요. - 입력 값 사이에 공백을 입력해주세요.");
         }
-        return string.substring(1);
+        return string.replace(STRING_SPACE, STRING_NULL);
     }
 
     public Level validateExistLevel(String inputLevel) {
@@ -85,8 +91,8 @@ public class Validator {
         return true;
     }
 
-    public void validateLoopCount(int loopCount){
-        if (loopCount >= 3) {
+    public void validateLoopCount(int loopCount) {
+        if (loopCount >= MAXIMUM_LOOP_COUNT) {
             throw new IllegalArgumentException("재생성 횟수를 초과하였습니다.");
         }
     }
