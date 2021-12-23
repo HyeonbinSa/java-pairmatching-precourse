@@ -11,6 +11,10 @@ import java.util.List;
 
 public class PairMatchController {
     private static final int MAXIMUM_LOOP_COUNT = 3;
+    private static final int LAST_ODD_INDEX = 3;
+    private static final int NEXT_INDEX = 1;
+    private static final int ZERO = 0;
+    private static final String YES = "네";
     private static InputView inputView = new InputView();
     private static Validator validator = new Validator();
 
@@ -29,7 +33,7 @@ public class PairMatchController {
         inputView.selectUpdatePair();
         String selection = Console.readLine();
         validator.validateSelectUpdateMenu(selection);
-        return selection.equals("네");
+        return selection.equals(YES);
     }
 
     private void removePairListInMission(Course course, Mission mission) {
@@ -42,9 +46,9 @@ public class PairMatchController {
 
     private void createPairList(PairList pairList, List<String> randomList) {
         pairList.clear();
-        for (int idx = 0; idx < randomList.size(); idx += 2) {
-            Pair pair = new Pair(randomList.get(idx), randomList.get(idx + 1));
-            if (randomList.size() % 2 == 1 && idx == randomList.size() - 3) {
+        for (int idx = ZERO; idx < randomList.size(); idx += 2) {
+            Pair pair = new Pair(randomList.get(idx), randomList.get(idx + NEXT_INDEX));
+            if (randomList.size() % 2 == 1 && idx == randomList.size() - LAST_ODD_INDEX) {
                 pair.addPair(randomList.get(randomList.size() - 1));
                 pairList.addPair(pair);
                 break;
@@ -72,7 +76,7 @@ public class PairMatchController {
     }
 
     public PairList recursiveCreateRandomPair(Level level, Course course) {
-        int loopCount = 0;
+        int loopCount = ZERO;
         PairList pairList = new PairList();
         while (loopCount < MAXIMUM_LOOP_COUNT) {
             loopCount++;
