@@ -3,6 +3,7 @@ package pairmatching.model;
 import java.util.ArrayList;
 
 public class Pair {
+    private static final int MAX_SAME_PAIR = 2;
     private ArrayList<String> pair = new ArrayList<>();
 
     public Pair(String name1, String name2) {
@@ -25,7 +26,7 @@ public class Pair {
                 count++;
             }
         }
-        if (count >= 2) {
+        if (count >= MAX_SAME_PAIR) {
             return false;
         }
         return true;
