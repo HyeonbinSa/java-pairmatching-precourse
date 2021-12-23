@@ -84,4 +84,10 @@ public class Validator {
         }
         return true;
     }
+
+    public void validateLoopCount(int loopCount){
+        if (loopCount >= 3) {
+            throw new IllegalArgumentException("재생성 횟수를 초과하였습니다.");
+        }
+    }
 }

@@ -82,9 +82,7 @@ public class PairMatchController {
                 return pairList;
             }
         }
-        if (loopCount >= 3) {
-            throw new IllegalArgumentException("재생성 횟수 초과 ");
-        }
+        validator.validateLoopCount(loopCount);
         return pairList;
     }
 
