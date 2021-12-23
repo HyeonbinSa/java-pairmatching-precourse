@@ -17,17 +17,14 @@ public class Pair {
         return pair;
     }
 
-    public boolean comparePair(Pair firstPair, Pair secondPair){
+    public boolean comparePair(Pair createdPair){
         int count = 0;
-        System.out.println(firstPair.getPair());
-        System.out.println(secondPair.getPair());
-        for(String name : firstPair.getPair()){
-            if(secondPair.getPair().contains(name)){
-                System.out.println(name);
+        for(String name : pair){
+            if(createdPair.getPair().contains(name)){
                 count++;
             }
         }
-        if(count >= 2){
+        if(count >=2){
             return false;
         }
         return true;

@@ -62,7 +62,8 @@ public class PairController {
             Course course = validator.validateCourse(splitInformation[0]);
             Level level = validator.validateLevel(splitInformation[1]);
             Mission mission = validator.validateMission(level, splitInformation[2]);
-            pairMatchController.match(level, course, mission);
+//            pairMatchController.match(level, course, mission);
+            pairMatchController.matchPair(course, level, mission);
             outputView.printPairList(course, mission);
         } catch (IllegalArgumentException exception) {
             outputView.printError(exception.getMessage());
