@@ -29,7 +29,7 @@ public class PairMatchController {
         addPairListMission(mission, course, pairList);
     }
 
-    public boolean selectUpdate() {
+    private boolean selectUpdate() {
         inputView.selectUpdatePair();
         String selection = Console.readLine();
         validator.validateSelectUpdateMenu(selection);
@@ -71,11 +71,11 @@ public class PairMatchController {
         return true;
     }
 
-    public boolean comparePairLists(PairList pairListInLevel, PairList createdPairList) {
+    private boolean comparePairLists(PairList pairListInLevel, PairList createdPairList) {
         return pairListInLevel.existSamePair(createdPairList);
     }
 
-    public PairList recursiveCreateRandomPair(Level level, Course course) {
+    private PairList recursiveCreateRandomPair(Level level, Course course) {
         int loopCount = ZERO;
         PairList pairList = new PairList();
         while (loopCount < MAXIMUM_LOOP_COUNT) {
@@ -90,7 +90,7 @@ public class PairMatchController {
         return pairList;
     }
 
-    public void addPairListMission(Mission mission, Course course, PairList pairList) {
+    private void addPairListMission(Mission mission, Course course, PairList pairList) {
         mission.addPairMap(course, pairList);
     }
 }
