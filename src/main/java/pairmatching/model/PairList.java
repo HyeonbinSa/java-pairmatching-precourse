@@ -19,10 +19,17 @@ public class PairList {
 
     public boolean existSamePair(PairList createPairList) {
         for (Pair pair : this.getPairList()) {
-            for (Pair createdPair : createPairList.getPairList()) {
-                if (!pair.comparePair(createdPair)) {
-                    return false;
-                }
+            if(!existSamePairInPairList(createPairList, pair)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean existSamePairInPairList(PairList createPairList, Pair pair){
+        for (Pair createdPair : createPairList.getPairList()) {
+            if (!pair.comparePair(createdPair)) {
+                return false;
             }
         }
         return true;
