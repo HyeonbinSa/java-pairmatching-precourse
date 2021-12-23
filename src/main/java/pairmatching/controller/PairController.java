@@ -1,7 +1,5 @@
 package pairmatching.controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import pairmatching.InitialSetting;
 import pairmatching.model.*;
 import pairmatching.validator.Validator;
@@ -9,7 +7,8 @@ import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class PairController {
     private InputView inputView = new InputView();
@@ -92,12 +91,12 @@ public class PairController {
             ArrayList<Mission> missions = level.getMissions();
             initialMissionList(missions);
         }
+        outputView.printInitPairMessage();
     }
 
     private void initialMissionList(ArrayList<Mission> missions) {
         for (Mission mission : missions) {
             mission.initPairMap();
         }
-        outputView.printInitPairMessage();
     }
 }

@@ -51,7 +51,7 @@ public class OutputView {
     }
 
     public void printPairList(Course course, Mission mission) {
-        System.out.println(PAIR_MATCH_RESULT);
+        System.out.println(NEW_LINE + PAIR_MATCH_RESULT);
         PairList pairList = mission.getPairList(course);
         for (Pair pair : pairList.getPairList()) {
             printPair(pair);
