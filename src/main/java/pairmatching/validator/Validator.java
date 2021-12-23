@@ -8,11 +8,18 @@ import java.util.Arrays;
 
 public class Validator {
     private static final String[] MENU_LIST = {"1", "2", "3", "Q"};
+    private static final String[] UPDATE_MENU_LIST = {"네", "아니오"};
     private static final char SPACE = ' ';
 
     public void validateSelectMenu(String menu) {
         if (!Arrays.asList(MENU_LIST).contains(menu)) {
             throw new IllegalArgumentException("선태한 기능은 없는 기능입니다.");
+        }
+    }
+
+    public void validateSelectUpdateMenu(String menu) {
+        if (!Arrays.asList(UPDATE_MENU_LIST).contains(menu)) {
+            throw new IllegalArgumentException("선태한 기능은 없는 기능입니다.(네 | 아니오) 중 하나를 입력해주세요.");
         }
     }
 

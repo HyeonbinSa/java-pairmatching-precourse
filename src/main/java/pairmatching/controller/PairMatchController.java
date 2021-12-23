@@ -3,13 +3,16 @@ package pairmatching.controller;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import pairmatching.model.*;
+import pairmatching.validator.Validator;
 import pairmatching.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PairMatchController {
+    private static final int MAXIMUM_LOOP_COUNT = 3;
     private static InputView inputView = new InputView();
+    private static Validator validator = new Validator();
 
     public void matchPair(Course course, Level level, Mission mission) {
         if (mission.getPairList(course) != null) {
@@ -25,6 +28,7 @@ public class PairMatchController {
     public boolean selectUpdate() {
         inputView.selectUpdatePair();
         String selection = Console.readLine();
+        validator.validateSelectUpdateMenu(selection);
         return selection.equals("네");
     }
 
@@ -70,7 +74,7 @@ public class PairMatchController {
     public PairList recursiveCreateRandomPair(Level level, Course course) {
         int loopCount = 0;
         PairList pairList = new PairList();
-        while (loopCount < 3) {
+        while (loopCount < MAXIMUM_LOOP_COUNT) {
             loopCount++;
             List<String> randomList = createRandomCrews(course);
             createPairList(pairList, randomList);
