@@ -32,8 +32,7 @@ public class InitialSetting {
             fileInput(fileName);
         }
     }
-
-
+    
     // 2. 해당 파일 읽기 
     public void fileInput(String fileName) {
         Course course = null;
@@ -52,18 +51,10 @@ public class InitialSetting {
                 course.addCrew(crew);
                 course.addStringCrew(readLine);
             }
-//            printCourse(course);
         } catch (FileNotFoundException exception) {
             System.out.println(exception.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    // test용 출력 코드
-//    public void  printCourse(Course  course){
-//        for(Crew crew : course.getCrewList()){
-//            System.out.println(crew.getName());
-//        }
-//    }
-
 }

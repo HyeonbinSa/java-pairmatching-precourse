@@ -17,10 +17,10 @@ public class PairList {
         pairList.clear();
     }
 
-    public boolean existSamePair(PairList createPairList){
-        for(Pair pair : this.getPairList()){
-            for(Pair createdPair :createPairList.getPairList()){
-                if(!pair.comparePair(createdPair)){
+    public boolean existSamePair(PairList createPairList) {
+        for (Pair pair : this.getPairList()) {
+            for (Pair createdPair : createPairList.getPairList()) {
+                if (!pair.comparePair(createdPair)) {
                     return false;
                 }
             }

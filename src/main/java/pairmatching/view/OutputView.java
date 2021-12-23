@@ -57,11 +57,7 @@ public class OutputView {
             printPair(pair);
         }
     }
-    public void printPairListTest(PairList pairList){
-        for (Pair pair : pairList.getPairList()) {
-            printPair(pair);
-        }
-    }
+
     public void printPair(Pair pair) {
         System.out.println(String.join(PAIR_DIVIDER, pair.getPair()));
     }

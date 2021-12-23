@@ -30,5 +30,4 @@ public enum Course {
     public List<String> getStringCrewList() {
         return stringCrewList;
     }
-
 }

@@ -4,14 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import pairmatching.model.*;
 import pairmatching.view.InputView;
-import pairmatching.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PairMatchController {
     private static InputView inputView = new InputView();
-    private static OutputView outputView = new OutputView();
 
     public void matchPair(Course course, Level level, Mission mission) {
         if (mission.getPairList(course) != null) {
